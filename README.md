@@ -126,8 +126,8 @@ import (
     "log"
     
     "github.com/Gosayram/go-envsync/pkg/client"
-    "github.com/zahongirrahmankulov/go-envsync/pkg/client"
-    "github.com/zahongirrahmankulov/go-envsync/pkg/providers/local"
+    "github.com/Gosayram/go-envsync/pkg/client"
+    "github.com/Gosayram/go-envsync/pkg/providers/local"
 )
 
 func main() {
