@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Environment Configuration Schema",
+  "description": "JSON Schema for validating go-envsync environment variables",
+  "type": "object",
+  "properties": {
+    "APP_NAME": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_-]+$",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Application name"
+    },
+    "APP_VERSION": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version number"
+    },
+    "APP_ENV": {
+      "type": "string",
+      "enum": ["development", "staging", "production"],
+      "description": "Application environment"
+    },
+    "APP_DEBUG": {
+      "type": "string",
+      "enum": ["true", "false"],
+      "description": "Debug mode flag"
+    },
+    "DB_HOST": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "Database host"
+    },
+    "DB_PORT": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]{0,4}$",
+      "description": "Database port number"
+    },
+    "DB_NAME": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_]+$",
+      "minLength": 1,
+      "maxLength": 64,
+      "description": "Database name"
+    },
+    "DB_USER": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "description": "Database username"
+    },
+    "DB_PASSWORD": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128,
+      "description": "Database password"
+    },
+    "API_PORT": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]{0,4}$",
+      "description": "API server port"
+    },
+    "API_TIMEOUT": {
+      "type": "string",
+      "pattern": "^\\d+[smh]$",
+      "description": "API timeout duration"
+    },
+    "API_RATE_LIMIT": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*$",
+      "description": "API rate limit per minute"
+    },
+    "REDIS_URL": {
+      "type": "string",
+      "pattern": "^redis://.*$",
+      "description": "Redis connection URL"
+    },
+    "ELASTICSEARCH_URL": {
+      "type": "string",
+      "pattern": "^https?://.*$",
+      "description": "Elasticsearch connection URL"
+    },
+    "JWT_SECRET": {
+      "type": "string",
+      "minLength": 16,
+      "maxLength": 256,
+      "description": "JWT signing secret"
+    },
+    "ENCRYPTION_KEY": {
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 64,
+      "description": "Encryption key for sensitive data"
+    },
+    "LOG_LEVEL": {
+      "type": "string",
+      "enum": ["debug", "info", "warn", "error"],
+      "description": "Logging level"
+    },
+    "LOG_FORMAT": {
+      "type": "string",
+      "enum": ["json", "text"],
+      "description": "Log output format"
+    },
+    "LOG_OUTPUT": {
+      "type": "string",
+      "enum": ["stdout", "stderr", "file"],
+      "description": "Log output destination"
+    }
+  },
+  "required": [
+    "APP_NAME",
+    "APP_VERSION",
+    "APP_ENV",
+    "DB_HOST",
+    "DB_PORT",
+    "DB_NAME",
+    "DB_USER",
+    "API_PORT"
+  ],
+  "additionalProperties": false
+} 
